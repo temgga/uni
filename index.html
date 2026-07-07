@@ -415,7 +415,7 @@
           <span class="detail-icon">📍</span>
           <div>
             <div class="detail-label">Локация</div>
-            <div class="detail-value mystery">Локация будет раскрыта в особом сообщении</div>
+            <div class="detail-value mystery">Место встречи будет раскрыто в день самого свидания</div>
             <span class="secret-badge">🔒 Засекречено</span>
           </div>
         </div>
@@ -431,8 +431,7 @@
       <div class="cta-section">
         <p class="cta-label">Так что скажешь?</p>
         <div class="btn-group">
-          <button class="btn" id="btnYesF">Я согласна</button>
-          <button class="btn" id="btnYesM">Я согласен</button>
+          <button class="btn" id="btnYes">Я согласна</button>
         </div>
         <p class="response-msg" id="responseMsg"></p>
       </div>
@@ -565,23 +564,17 @@
 
     /* ── Button handlers ── */
     const msg = document.getElementById('responseMsg');
-    const btnF = document.getElementById('btnYesF');
-    const btnM = document.getElementById('btnYesM');
+    const btn = document.getElementById('btnYes');
 
-    function handleAccept(label) {
-      btnF.classList.add('accepted');
-      btnM.classList.add('accepted');
-      btnF.textContent = '✓ Принято';
-      btnM.style.display = 'none';
-      msg.textContent = label === 'f'
-        ? 'Ура! Жду тебя 8 июля. Этот вечер будет особенным ♥'
-        : 'Отлично! Жду тебя 8 июля. Этот вечер будет особенным ♥';
+    function handleAccept() {
+      btn.classList.add('accepted');
+      btn.textContent = '✓ Принято';
+      msg.innerHTML = 'Ура! Жду тебя 8 июля. Этот вечер будет особенным ♥<br>Я заеду за тобой в 18:30';
       msg.classList.add('show');
       celebrate();
     }
 
-    btnF.addEventListener('click', () => handleAccept('f'));
-    btnM.addEventListener('click', () => handleAccept('m'));
+    btn.addEventListener('click', handleAccept);
   </script>
 </body>
 </html>
